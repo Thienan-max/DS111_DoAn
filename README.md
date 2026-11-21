@@ -1,22 +1,35 @@
 # Đồ án DS111: Hồi quy giá máy lạnh treo tường trên Tiki
 
-Phân tích và dự đoán giá bán **máy lạnh treo tường** trên Tiki (229 sản phẩm, trích xuất từ bộ dữ liệu 60.014 sản phẩm tự crawl).
+Phân tích dữ liệu và dự đoán giá bán **máy lạnh treo tường** trên Tiki (**229 sản phẩm**, 24 thương hiệu), trích xuất từ bộ dữ liệu **60.014 sản phẩm** (16 cột) do nhóm tự crawl.
 
-## Cấu trúc thư mục
+## Cấu trúc thư mục hiện tại
 
 ```text
 ├── data/
-│   ├── raw/                        # Dữ liệu thô (tiki_products_60k.jsonl & tiki_may_lanh_229.csv)
-│   └── processed/                  # 4 tập dữ liệu đã qua pipeline xử lý (D1, D2, D3, D4)
-├── 01_workbook_xu_ly_du_lieu.ipynb # Workbook 6 bước xử lý dữ liệu (bắt buộc)
-├── 02_eda.ipynb                    # Phân tích khám phá dữ liệu (EDA - 7 mục theo Bài 04)
-├── 03_kich_ban_xu_ly.ipynb         # Tạo 4 pipeline dữ liệu (R1/R2 × M1/M2)
-├── 04_mo_hinh.ipynb                # Huấn luyện & đánh giá 8 kịch bản (+ Ridge) với RepeatedKFold 5×5
-├── 05_insight.ipynb                # Trả lời 5 câu hỏi insight & trực quan hóa cuối
-└── Plan đồ án DS111 (1).pdf        # Kế hoạch chi tiết đồ án
+│   ├── raw/
+│   │   ├── tiki_may_lanh_229.csv       # 229 sản phẩm Máy lạnh treo tường đã lọc
+│   │   └── tiki_products_60k.jsonl     # (Local only, .gitignore) 60.014 sản phẩm gốc
+│   └── processed/                      # Chờ dữ liệu sau xử lý
+├── 01_workbook_xu_ly_du_lieu.ipynb     # Bước 1: Thu thập & lọc ngành hàng Máy lạnh treo tường
+├── .gitignore
+└── README.md
 ```
 
-## Phân công
+## Tiến độ đã thực hiện
 
-- **Người A:** `01_workbook_xu_ly_du_lieu.ipynb`, `03_kich_ban_xu_ly.ipynb`, `04_mo_hinh.ipynb`
-- **Người B:** `02_eda.ipynb`, `05_insight.ipynb`
+- **Bước 1 — Thu thập & lọc dữ liệu (`01_workbook_xu_ly_du_lieu.ipynb`):**
+  - Đọc bộ dữ liệu gốc `tiki_products_60k.jsonl` (60.014 dòng, 16 cột).
+  - Thống kê các ngành lá có $\ge 150$ sản phẩm (77 ngành) và lọc ra ngành `Máy lạnh treo tường` (229 sản phẩm, 24 thương hiệu).
+  - Lưu ra `data/raw/tiki_may_lanh_229.csv`.
+
+## Quy trình làm việc với Git
+
+```powershell
+# Kéo code mới nhất trước khi làm
+git pull
+
+# Lưu thay đổi và đẩy lên GitHub
+git add <tên_file>
+git commit -m "mo ta ngan gon thay doi"
+git push
+```
