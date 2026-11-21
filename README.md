@@ -11,6 +11,7 @@ Phân tích dữ liệu và dự đoán giá bán **máy lạnh treo tường** 
 │   │   └── tiki_products_60k.jsonl     # (Local only, .gitignore) 60.014 sản phẩm gốc
 │   └── processed/                      # Chờ dữ liệu sau xử lý
 ├── 01_workbook_xu_ly_du_lieu.ipynb     # Bước 1: Thu thập & lọc ngành hàng Máy lạnh treo tường
+├── 02_eda.ipynb                        # Bước 1 EDA: Cấu trúc dữ liệu & dán nhãn biến (.attrs)
 ├── .gitignore
 └── README.md
 ```
@@ -21,6 +22,9 @@ Phân tích dữ liệu và dự đoán giá bán **máy lạnh treo tường** 
   - Đọc bộ dữ liệu gốc `tiki_products_60k.jsonl` (60.014 dòng, 16 cột).
   - Thống kê các ngành lá có $\ge 150$ sản phẩm (77 ngành) và lọc ra ngành `Máy lạnh treo tường` (229 sản phẩm, 24 thương hiệu).
   - Lưu ra `data/raw/tiki_may_lanh_229.csv`.
+- **Bước 1 EDA — Cấu trúc dữ liệu (`02_eda.ipynb` — Người B):**
+  - Kiểm tra `shape`, `dtypes`, `info()`, `head()`, `tail()`.
+  - Phân loại biến bằng `select_dtypes` và dán nhãn chi tiết từng cột bằng `.attrs` (`'Định tính'`, `'Định lượng rời rạc'`, `'Định lượng'`).
 
 ## Quy trình làm việc với Git
 
